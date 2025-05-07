@@ -29,17 +29,26 @@ namespace csharp6
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            timer1 = new System.Windows.Forms.Timer(components);
             picDisplay = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)picDisplay).BeginInit();
             SuspendLayout();
             // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 40;
+            timer1.Tick += timer1_Tick;
+            // 
             // picDisplay
             // 
-            picDisplay.Location = new Point(2, 3);
+            picDisplay.Location = new Point(-1, 0);
             picDisplay.Name = "picDisplay";
-            picDisplay.Size = new Size(798, 446);
+            picDisplay.Size = new Size(800, 451);
             picDisplay.TabIndex = 0;
             picDisplay.TabStop = false;
+            picDisplay.MouseMove += picDisplay_MouseMove;
             // 
             // Form1
             // 
@@ -49,6 +58,7 @@ namespace csharp6
             Controls.Add(picDisplay);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)picDisplay).EndInit();
             ResumeLayout(false);
         }
@@ -58,8 +68,8 @@ namespace csharp6
             throw new NotImplementedException();
         }
 
-        #endregion
-
+#endregion
+        private System.Windows.Forms.Timer timer1;
         private PictureBox picDisplay;
     }
 }
