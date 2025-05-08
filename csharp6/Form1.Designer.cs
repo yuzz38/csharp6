@@ -36,11 +36,9 @@ namespace csharp6
             lblDirection = new Label();
             tbSpread = new TrackBar();
             lblSpread = new Label();
-            tbGraviton = new TrackBar();
             ((System.ComponentModel.ISupportInitialize)picDisplay).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbDirection).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbSpread).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)tbGraviton).BeginInit();
             SuspendLayout();
             // 
             // timer1
@@ -92,21 +90,11 @@ namespace csharp6
             lblSpread.Size = new Size(0, 20);
             lblSpread.TabIndex = 4;
             // 
-            // tbGraviton
-            // 
-            tbGraviton.Location = new Point(389, 399);
-            tbGraviton.Maximum = 100;
-            tbGraviton.Name = "tbGraviton";
-            tbGraviton.Size = new Size(130, 56);
-            tbGraviton.TabIndex = 5;
-            tbGraviton.Scroll += tbGraviton_Scroll;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(tbGraviton);
             Controls.Add(lblSpread);
             Controls.Add(tbSpread);
             Controls.Add(lblDirection);
@@ -118,7 +106,6 @@ namespace csharp6
             ((System.ComponentModel.ISupportInitialize)picDisplay).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbDirection).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbSpread).EndInit();
-            ((System.ComponentModel.ISupportInitialize)tbGraviton).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -135,6 +122,5 @@ namespace csharp6
         private Label lblDirection;
         private TrackBar tbSpread;
         private Label lblSpread;
-        private TrackBar tbGraviton;
     }
 }

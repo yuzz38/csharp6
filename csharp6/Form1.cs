@@ -4,10 +4,14 @@ namespace csharp6
     {
         List<Emitter> emitters = new List<Emitter>();
         Emitter emitter;
+        GravityPoint point1; // добавил поле под первую точку
+        GravityPoint point2; // добавил поле под вторую точку
+        TeleportPoint teleport;
         public Form1()
         {
             InitializeComponent();
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
+            picDisplay.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picDisplay_MouseDown);
             this.emitter = new TopEmitter
             {
                 Direction = 0,
@@ -22,19 +26,32 @@ namespace csharp6
             };
 
             emitters.Add(this.emitter);
-
-            emitter.impactPoints.Add(new GravityPoint
+            teleport = new TeleportPoint
             {
-                X = picDisplay.Width / 2 + 100,
-                Y = picDisplay.Height / 2,
-            });
+                X = 100,
+                Y = 100,
+                ExitX = 700,
+                ExitY = 100
+            };
 
-            // добавил второй гравитон
-            emitter.impactPoints.Add(new GravityPoint
-            {
-                X = picDisplay.Width / 2 - 100,
-                Y = picDisplay.Height / 2,
-            });
+            // добавляем телепорт к эмиттеру
+            emitter.impactPoints.Add(teleport);
+
+            // привязываем гравитоны к полям
+            //point1 = new GravityPoint
+            //{
+            //    X = picDisplay.Width / 2 + 100,
+            //    Y = picDisplay.Height / 2,
+            //};
+            //point2 = new GravityPoint
+            //{
+            //    X = picDisplay.Width / 2 - 100,
+            //    Y = picDisplay.Height / 2,
+            //};
+
+            //// привязываем поля к эмиттеру
+            //emitter.impactPoints.Add(point1);
+            //emitter.impactPoints.Add(point2);
         }
 
 
@@ -47,7 +64,21 @@ namespace csharp6
         {
 
         }
-
+        private void picDisplay_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                // левая кнопка - перемещаем вход
+                teleport.X = e.X;
+                teleport.Y = e.Y;
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                // правая кнопка - перемещаем выход
+                teleport.ExitX = e.X;
+                teleport.ExitY = e.Y;
+            }
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             emitter.UpdateState(); // тут теперь обновляем эмиттер
@@ -62,9 +93,13 @@ namespace csharp6
         }
         private void picDisplay_MouseMove(object sender, MouseEventArgs e)
         {
-            // а тут в эмиттер передаем положение мыфки
-            //emitter.MousePositionX = e.X;
-            //emitter.MousePositionY = e.Y;
+            foreach (var emitter in emitters)
+            {
+                emitter.MousePositionX = e.X;
+                emitter.MousePositionY = e.Y;
+            }
+            //point2.X = e.X;
+            //point2.Y = e.Y;
         }
 
         private void tbDirection_Scroll(object sender, EventArgs e)
@@ -79,16 +114,6 @@ namespace csharp6
             lblSpread.Text = $"{tbSpread.Value}°";
         }
 
-        private void tbGraviton_Scroll(object sender, EventArgs e)
-        {
-            foreach (var p in emitter.impactPoints)
-            {
-                if (p is GravityPoint) // так как impactPoints не обязательно содержит поле Power, надо проверить на тип 
-                {
-                    // если гравитон то меняем силу
-                    (p as GravityPoint).Power = tbGraviton.Value;
-                }
-            }
-        }
+      
     }
 }
