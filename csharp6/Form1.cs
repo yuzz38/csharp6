@@ -23,7 +23,18 @@ namespace csharp6
 
             emitters.Add(this.emitter);
 
+            emitter.impactPoints.Add(new GravityPoint
+            {
+                X = picDisplay.Width / 2 + 100,
+                Y = picDisplay.Height / 2,
+            });
 
+            // добавил второй гравитон
+            emitter.impactPoints.Add(new GravityPoint
+            {
+                X = picDisplay.Width / 2 - 100,
+                Y = picDisplay.Height / 2,
+            });
         }
 
 
@@ -60,6 +71,24 @@ namespace csharp6
         {
             emitter.Direction = tbDirection.Value;
             lblDirection.Text = $"{tbDirection.Value}°";
+        }
+
+        private void tbSpread_Scroll(object sender, EventArgs e)
+        {
+            emitter.Spreading = tbSpread.Value;
+            lblSpread.Text = $"{tbSpread.Value}°";
+        }
+
+        private void tbGraviton_Scroll(object sender, EventArgs e)
+        {
+            foreach (var p in emitter.impactPoints)
+            {
+                if (p is GravityPoint) // так как impactPoints не обязательно содержит поле Power, надо проверить на тип 
+                {
+                    // если гравитон то меняем силу
+                    (p as GravityPoint).Power = tbGraviton.Value;
+                }
+            }
         }
     }
 }
