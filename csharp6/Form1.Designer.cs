@@ -32,7 +32,10 @@ namespace csharp6
             components = new System.ComponentModel.Container();
             timer1 = new System.Windows.Forms.Timer(components);
             picDisplay = new PictureBox();
+            tbDirection = new TrackBar();
+            lblDirection = new Label();
             ((System.ComponentModel.ISupportInitialize)picDisplay).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tbDirection).BeginInit();
             SuspendLayout();
             // 
             // timer1
@@ -45,22 +48,43 @@ namespace csharp6
             // 
             picDisplay.Location = new Point(-1, 0);
             picDisplay.Name = "picDisplay";
-            picDisplay.Size = new Size(800, 451);
+            picDisplay.Size = new Size(800, 393);
             picDisplay.TabIndex = 0;
             picDisplay.TabStop = false;
             picDisplay.MouseMove += picDisplay_MouseMove;
+            // 
+            // tbDirection
+            // 
+            tbDirection.Location = new Point(-1, 399);
+            tbDirection.Maximum = 359;
+            tbDirection.Name = "tbDirection";
+            tbDirection.Size = new Size(164, 56);
+            tbDirection.TabIndex = 1;
+            tbDirection.Scroll += tbDirection_Scroll;
+            // 
+            // lblDirection
+            // 
+            lblDirection.AutoSize = true;
+            lblDirection.Location = new Point(169, 409);
+            lblDirection.Name = "lblDirection";
+            lblDirection.Size = new Size(0, 20);
+            lblDirection.TabIndex = 2;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblDirection);
+            Controls.Add(tbDirection);
             Controls.Add(picDisplay);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)picDisplay).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tbDirection).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         private void picDisplay_Click(object sender, EventArgs e)
@@ -71,5 +95,7 @@ namespace csharp6
 #endregion
         private System.Windows.Forms.Timer timer1;
         private PictureBox picDisplay;
+        private TrackBar tbDirection;
+        private Label lblDirection;
     }
 }
