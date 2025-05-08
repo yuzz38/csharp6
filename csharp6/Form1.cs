@@ -114,6 +114,10 @@ namespace csharp6
             lblSpread.Text = $"{tbSpread.Value}°";
         }
 
-      
+        private void tbTeleportRadius_Scroll(object sender, EventArgs e)
+        {
+            teleport.Radius = tbTeleportRadius.Value;
+            lblTeleportRadius.Text = $"Радиус телепорта: {tbTeleportRadius.Value}";
+        }
     }
 }

@@ -36,9 +36,14 @@ namespace csharp6
             lblDirection = new Label();
             tbSpread = new TrackBar();
             lblSpread = new Label();
+            lblDirect = new Label();
+            lblSp = new Label();
+            tbTeleportRadius = new TrackBar();
+            lblTeleportRadius = new Label();
             ((System.ComponentModel.ISupportInitialize)picDisplay).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbDirection).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbSpread).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tbTeleportRadius).BeginInit();
             SuspendLayout();
             // 
             // timer1
@@ -51,14 +56,14 @@ namespace csharp6
             // 
             picDisplay.Location = new Point(-1, 0);
             picDisplay.Name = "picDisplay";
-            picDisplay.Size = new Size(800, 393);
+            picDisplay.Size = new Size(800, 383);
             picDisplay.TabIndex = 0;
             picDisplay.TabStop = false;
             picDisplay.MouseMove += picDisplay_MouseMove;
             // 
             // tbDirection
             // 
-            tbDirection.Location = new Point(-1, 399);
+            tbDirection.Location = new Point(-1, 409);
             tbDirection.Maximum = 359;
             tbDirection.Name = "tbDirection";
             tbDirection.Size = new Size(164, 56);
@@ -75,7 +80,7 @@ namespace csharp6
             // 
             // tbSpread
             // 
-            tbSpread.Location = new Point(211, 399);
+            tbSpread.Location = new Point(217, 409);
             tbSpread.Maximum = 50;
             tbSpread.Name = "tbSpread";
             tbSpread.Size = new Size(130, 56);
@@ -90,11 +95,51 @@ namespace csharp6
             lblSpread.Size = new Size(0, 20);
             lblSpread.TabIndex = 4;
             // 
+            // lblDirect
+            // 
+            lblDirect.AutoSize = true;
+            lblDirect.Location = new Point(6, 385);
+            lblDirect.Name = "lblDirect";
+            lblDirect.Size = new Size(104, 20);
+            lblDirect.TabIndex = 5;
+            lblDirect.Text = "Направление";
+            // 
+            // lblSp
+            // 
+            lblSp.AutoSize = true;
+            lblSp.Location = new Point(217, 385);
+            lblSp.Name = "lblSp";
+            lblSp.Size = new Size(117, 20);
+            lblSp.TabIndex = 6;
+            lblSp.Text = "Разброс частиц";
+            // 
+            // tbTeleportRadius
+            // 
+            tbTeleportRadius.Location = new Point(420, 409);
+            tbTeleportRadius.Maximum = 100;
+            tbTeleportRadius.Name = "tbTeleportRadius";
+            tbTeleportRadius.Size = new Size(130, 56);
+            tbTeleportRadius.TabIndex = 7;
+            tbTeleportRadius.Scroll += tbTeleportRadius_Scroll;
+            // 
+            // lblTeleportRadius
+            // 
+            lblTeleportRadius.AutoSize = true;
+            lblTeleportRadius.Location = new Point(420, 386);
+            lblTeleportRadius.Name = "lblTeleportRadius";
+            lblTeleportRadius.Size = new Size(135, 20);
+            lblTeleportRadius.TabIndex = 8;
+            lblTeleportRadius.Text = "Радиус телепорта ";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblTeleportRadius);
+            Controls.Add(tbTeleportRadius);
+            Controls.Add(lblSp);
+            Controls.Add(lblDirect);
             Controls.Add(lblSpread);
             Controls.Add(tbSpread);
             Controls.Add(lblDirection);
@@ -106,6 +151,7 @@ namespace csharp6
             ((System.ComponentModel.ISupportInitialize)picDisplay).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbDirection).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbSpread).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tbTeleportRadius).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -122,5 +168,9 @@ namespace csharp6
         private Label lblDirection;
         private TrackBar tbSpread;
         private Label lblSpread;
+        private Label lblDirect;
+        private Label lblSp;
+        private TrackBar tbTeleportRadius;
+        private Label lblTeleportRadius;
     }
 }

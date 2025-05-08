@@ -128,6 +128,8 @@ namespace csharp6
                 // инвертируем направление скорости (разворачиваем частицу)
                 particle.SpeedX = -relativeSpeedX;
                 particle.SpeedY = -relativeSpeedY;
+                particle.SpeedX *= 1.1f;
+                particle.SpeedY *= 1.1f;
             }
         }
 
